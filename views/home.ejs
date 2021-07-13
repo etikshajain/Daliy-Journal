@@ -1,0 +1,47 @@
+<%- include("partials/header") -%>
+
+<div class="top">
+  <br><br>
+<h1 style="font-size:8rem;"><b>Welcome to Daily Journal</b></h1><br>
+<h1>Publish your thoughts, your way.</h1><br>
+
+<p style="font-size:2.5rem">Type down whatever it is you want to talk about. It's easy and free. </p><br><br><br>
+<a href="/compose" class="btn btn-lg btn-warning">Create your blog</a>
+<br><br><br><br>
+<!-- <h1 style="text-align:center"><b>Latest Blogs:</b></h1><br><br><br> -->
+</div>
+
+
+
+<div class="container-blog">
+
+<% for(var i=listofblogs.length-1;i>=0;i--){ %>
+<%       if(i%2==0){ %>
+                <div class="blog" style="background-color:#f2dac3;">
+  <%    }else{ %>
+               <div class="blog">
+  <% }  %>
+
+
+<!-- name of author: -->
+     <h1><b><%=listofblogs[i].name%></b></h1><br>
+
+   <img src="/images/user.png" alt="" width="100px" height="100px">
+  <h1><%=listofblogs[i].title%></h1>
+
+  <% if(listofblogs[i].post.length>300){ %>
+    <p><%=listofblogs[i].post.slice(0,300)%>...<a href="/posts/<%=listofblogs[i]._id%>">Read More</a></p>
+
+  <%}else{%>
+      <p><%=listofblogs[i].post%></p>
+
+  <%}%>
+  <br><br>
+  </div>
+
+<%}%>
+</div>
+
+
+
+<%- include("partials/footer") -%>
